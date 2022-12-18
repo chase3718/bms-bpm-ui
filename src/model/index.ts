@@ -1,0 +1,1 @@
+export { BaseProps } from './BaseProps';
