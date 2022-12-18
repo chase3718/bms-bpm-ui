@@ -7,7 +7,7 @@ import React, {
 import { InputProps, RCInputElementProps } from "./input-model";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { IconDefinition } from "@fortawesome/fontawesome-svg-core";
-// import "./style.scss";
+import "./style.scss";
 
 /**
  * @function Input
@@ -116,11 +116,17 @@ export const Input = React.forwardRef<RCInputElementProps, InputProps>(
 			(ev: React.ChangeEvent<HTMLInputElement>) => {
 				const val = ev.target.value.slice(0, maxLength);
 				onChange?.(val, value, ev.target);
-				inputSetter?.(val);
-				setValue(val);
+				// inputSetter?.(val);
+				// setValue(val);
+				setVals(val);
 			},
 			[value]
 		);
+
+		const setVals = (val) => {
+			inputSetter?.(val);
+			setValue(val);
+		};
 
 		const useIcon = (icon: IconDefinition) => {
 			return (
