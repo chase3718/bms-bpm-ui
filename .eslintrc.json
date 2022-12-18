@@ -16,6 +16,6 @@
 		"sourceType": "module"
 	},
 	"plugins": ["react", "@typescript-eslint"],
-	"ignorePatterns": ["index.js"],
+	"ignorePatterns": ["/rollup.config.js", "/dist"],
 	"rules": {}
 }
