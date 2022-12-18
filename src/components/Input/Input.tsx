@@ -118,7 +118,7 @@ export const Input = React.forwardRef<RCInputElementProps, InputProps>(
 				onChange?.(val, value, ev.target);
 				// inputSetter?.(val);
 				// setValue(val);
-				setVals(val);
+				// setVals(val);
 			},
 			[value]
 		);
