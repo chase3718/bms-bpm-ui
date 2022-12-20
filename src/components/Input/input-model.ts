@@ -222,6 +222,7 @@ export interface InputProps extends BaseProps {
 	 * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#attr-value
 	 */
 	defaultValue?: string;
+	inputSetter?: (value: string) => void;
 	/**
 	 * @property icon
 	 * @description Specifies the icon to be displayed in the input
@@ -231,7 +232,6 @@ export interface InputProps extends BaseProps {
 	 * @default undefined
 	 * @see https://fontawesome.com/icons?d=gallery
 	 */
-	inputSetter?: (value: string) => void;
 	icon?: IconDefinition;
 	/**
 	 * @property iconPosition
