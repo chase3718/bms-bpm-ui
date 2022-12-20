@@ -1,4 +1,4 @@
-import { ReactNode, CSSProperties } from 'react';
+import { ReactNode, CSSProperties } from "react";
 
 /**
  * @interface BaseProps
@@ -15,6 +15,15 @@ export interface BaseProps {
 	 * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/id
 	 */
 	id?: string;
+	/**
+	 * @property autoFocus
+	 * @description Specifies that an <input> element should automatically get focus when the page loads
+	 * @type boolean
+	 * @required No
+	 * @example autoFocus={true}
+	 * @default false
+	 */
+	autoFocus?: boolean;
 	/**
 	 * @property className
 	 * @description Specifies one or more classnames for an element (refers to a class in a style sheet)
@@ -34,6 +43,15 @@ export interface BaseProps {
 	 * @default undefined
 	 */
 	alias?: string;
+	/**
+	 * @property disabled
+	 * @description Specifies that an <input> element should be disabled
+	 * @type boolean
+	 * @required No
+	 * @example disabled={true}
+	 * @default false
+	 */
+	disabled?: boolean;
 	/**
 	 * @property children
 	 * @description Specifies the children for an element
