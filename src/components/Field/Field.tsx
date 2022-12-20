@@ -1,7 +1,9 @@
-
 import React from "react";
 import { FieldProps, RCFieldElementProps } from "./Field-model";
 import "./style.scss";
+import { Label } from "../Label";
+import { Input } from "../Input";
+import { useRandomId } from "../../hooks";
 
 /**
  * @function Field
@@ -13,8 +15,11 @@ import "./style.scss";
 export const Field = React.forwardRef<RCFieldElementProps, FieldProps>(
 	(
 		{
-			id,
+			// Base props
+			id = "field-" + useRandomId(),
+			autoFocus,
 			className,
+			disabled,
 			alias,
 			children,
 			width,
@@ -25,15 +30,82 @@ export const Field = React.forwardRef<RCFieldElementProps, FieldProps>(
 			maxHeight,
 			styles,
 
+			// Field props
+			labelPosition = "top",
+			labelAlign = "left",
+			labelWidth,
+			inputWidth,
+
+			// Label props
+			noSemicolon,
+			text,
+
+			// Input props
 			alt,
+			autoComplete,
+			checked,
+			form,
+			min,
+			minLength,
+			max,
+			maxLength,
+			multiple,
+			name,
+			pattern,
+			placeholder,
+			readOnly,
+			required,
+			size,
+			step,
+			type,
+			defaultValue,
+			icon,
+			iconPosition,
+			iconOnClick,
+			onChange,
+			onKeyDown,
 		},
 		ref
 	) => {
-
-		const FieldProps = {
-			id,
-			alt,
+		const labelProps = {
+			width: labelWidth,
+			htmlFor: id,
+			noSemicolon,
+			text,
+			styles: {},
 		};
+
+		const inputProps = {
+			alt,
+			autoFocus,
+			id: id,
+			width: inputWidth,
+			autoComplete,
+			checked,
+			disabled,
+			form,
+			min,
+			minLength,
+			max,
+			maxLength,
+			multiple,
+			name,
+			pattern,
+			placeholder,
+			readOnly,
+			required,
+			size,
+			step,
+			type,
+			defaultValue,
+			icon,
+			iconPosition,
+			iconOnClick,
+			onChange,
+			onKeyDown,
+			styles: {},
+		};
+
 		const styleProps = {
 			...styles,
 			width,
@@ -44,6 +116,14 @@ export const Field = React.forwardRef<RCFieldElementProps, FieldProps>(
 			maxHeight,
 		};
 
+		if (labelAlign === "left") {
+			labelProps.styles = { justifyContent: "flex-start" };
+		} else if (labelAlign === "right") {
+			labelProps.styles = { justifyContent: "flex-end" };
+		} else if (labelAlign === "center") {
+			labelProps.styles = { justifyContent: "center" };
+		}
+
 		const style = Object.entries(styleProps).reduce((acc, [key, value]) => {
 			if (value) acc[key] = value;
 			return acc;
@@ -51,10 +131,13 @@ export const Field = React.forwardRef<RCFieldElementProps, FieldProps>(
 
 		return (
 			<span
+				className={`type-field ${"label-" + labelPosition} ${
+					"label-align-" + labelAlign
+				} ${className || ""}`}
 				style={style}
-				className={`type-Field${className ? " " + className : ""}`}
 			>
-				<Field {...FieldProps}></Field>
+				<Label {...labelProps}></Label>
+				<Input {...inputProps}></Input>
 			</span>
 		);
 	}
