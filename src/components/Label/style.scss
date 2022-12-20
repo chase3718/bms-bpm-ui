@@ -1,6 +1,8 @@
 @import "../../globals.scss";
 
 .type-label {
+	display: flex;
+	// position: relative;
 	font-size: $global-font-size;
 	color: $light-gray-text;
 	font-family: $global-font;
