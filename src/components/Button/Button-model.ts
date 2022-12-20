@@ -143,6 +143,15 @@ export interface ButtonProps extends BaseProps {
 	 */
 	text?: string;
 	/**
+	 * @property textColor
+	 * @description Specifies the color of the text
+	 * @type string
+	 * @required No
+	 * @example textColor="#ffffff"
+	 * @default undefined
+	 */
+	textColor?: string;
+	/**
 	 * @property type
 	 * @description Specifies the type of button
 	 * @type "submit" | "rest" | "button"
