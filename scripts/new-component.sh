@@ -94,6 +94,7 @@ export const ${component_name} = React.forwardRef<RC${component_name}ElementProp
 			minWidth,
 			maxWidth,
 			height,
+			hidden,
 			minHeight,
 			maxHeight,
 			styles,
