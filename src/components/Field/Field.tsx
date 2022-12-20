@@ -38,7 +38,7 @@ export const Field = React.forwardRef<RCFieldElementProps, FieldProps>(
 
 			// Label props
 			noSemicolon,
-			text,
+			labelText,
 
 			// Input props
 			alt,
@@ -71,7 +71,7 @@ export const Field = React.forwardRef<RCFieldElementProps, FieldProps>(
 			width: labelWidth,
 			htmlFor: id,
 			noSemicolon,
-			text,
+			text: labelText,
 			styles: {},
 		};
 
@@ -79,7 +79,7 @@ export const Field = React.forwardRef<RCFieldElementProps, FieldProps>(
 			alt,
 			autoFocus,
 			id: id,
-			width: inputWidth,
+			width: "100%",
 			autoComplete,
 			checked,
 			disabled,
@@ -115,6 +115,18 @@ export const Field = React.forwardRef<RCFieldElementProps, FieldProps>(
 			minHeight,
 			maxHeight,
 		};
+
+		if (inputWidth) {
+			if (labelPosition === "left") {
+				styleProps.gridTemplateColumns = `max-content ${inputWidth} auto`;
+			} else if (labelPosition === "top") {
+				inputProps.width = inputWidth;
+			}
+		} else {
+			if (labelPosition === "top") {
+				styleProps.gridTemplateRows = "auto 1fr";
+			}
+		}
 
 		if (labelAlign === "left") {
 			labelProps.styles = { justifyContent: "flex-start" };
