@@ -1,24 +1,52 @@
 import { BaseProps } from "../../model";
+import { InputProps } from "../Input/Input-model";
+import { LabelProps } from "../Label/Label-model";
 
 /**
  * @interface FieldProps
  * @description Field component props
  */
-export interface FieldProps extends BaseProps {
+export interface FieldProps extends BaseProps, LabelProps, InputProps {
 	/**
-	 * @property alt
-	 * @description Specifies an alternate text for an image, if the image cannot be displayed
+	 * @property labelPosition
+	 * @description Specifies the position of the label
+	 * @type "left" | "top"
+	 * @required No
+	 * @example labelPosition="top"
+	 * @default "top"
+	 */
+	labelPosition?: "left" | "top";
+	/**
+	 * @property labelWidth
+	 * @description Specifies the width of the label
 	 * @type string
 	 * @required No
-	 * @example alt="Alternate text"
+	 * @example labelWidth="100px"
 	 * @default undefined
-	 * @see https://www.w3schools.com/tags/att_Field_alt.asp
 	 */
-	alt?: string;
+	labelWidth?: string;
+	/**
+	 * @property labelAlign
+	 * @description Specifies the alignment of the label
+	 * @type "left" | "center" | "right"
+	 * @required No
+	 * @example labelAlign="center"
+	 * @default "left"
+	 */
+	labelAlign?: "left" | "center" | "right";
+	/**
+	 * @property inputWidth
+	 * @description Specifies the width of the input
+	 * @type string
+	 * @required No
+	 * @example inputWidth="100px"
+	 * @default undefined
+	 */
+	inputWidth?: string;
 }
 
-export type RCComponentElementProps =
-	| (Partial<HTMLDivElement> & {
+export type RCFieldElementProps =
+	| (Partial<HTMLElement> & {
 			focus: () => void;
 			getValue: () => string;
 			setValue: (value: string) => void;
