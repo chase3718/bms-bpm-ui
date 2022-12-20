@@ -1,80 +1,139 @@
 #!/bin/bash
 
-# Check if a component name was provided
-if [ -z "$1" ]
-then
-  echo "Please provide a component name."
+# Check if the required number of arguments is provided
+if [ $# -lt 1 ]; then
+  echo "Usage: $0 component_name"
   exit 1
 fi
 
-# Convert the component name to lowercase
-component_name_lowercase=$(echo "$1" | tr '[:upper:]' '[:lower:]')
+# Set the component name and create the component folder
+component_name=$1
+component_folder=src/components/${component_name,,}
+mkdir -p $component_folder
 
-# Create the component directory
-mkdir src/components/$1
+# Create the component files and include an empty echo statement
+echo "export { $component_name } from \"./$component_name\";" > "$component_folder/index.ts"
 
-# Create the component file
-touch src/components/$1/$1.tsx
-echo "import React, { forwardRef } from 'react';
-import { $1Props, RC$1ElementProps } from 'components/$1';
-import './style.scss';
+echo "import { BaseProps } from "../../model";
 
 /**
- * @function $1
- * @param {$component_name_lowercaseProps} props
- * @returns {JSX.Element} $1 component
- * @description $1 component
- * @example 
+ * @interface ${component_name}Props
+ * @description ${component_name} component props
  */
-export const $1 = forwardRef((RC$1ElementProps, $1Props) => {
-  return (
-    <div>
-      $1 component
-    </div>
-  );
-});
-
-$1.displayName = '$1';" > src/components/$1/$1.tsx
-
-# Create the model file
-touch src/components/$1/${component_name_lowercase}-model.ts
-echo "import { BaseProps } from 'model';
-
-/**
- * @interface $1Props
- * @description Input component props
- */
-export interface $1Props extends BaseProps {
-/**
-	 * @property fakeProperty
-	 * @description fakeProperty description
+export interface ${component_name}Props extends BaseProps {
+	/**
+	 * @property alt
+	 * @description Specifies an alternate text for an image, if the image cannot be displayed
 	 * @type string
 	 * @required No
-	 * @example fakeProperty="fake"
-	 * @default "fake"
-	 * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/fakeProperty
+	 * @example alt="Alternate text"
+	 * @default undefined
+	 * @see https://www.w3schools.com/tags/att_$component_name_alt.asp
 	 */
-	fakeProperty?: string;
+	alt?: string;
 }
 
-export type RC$1ElementProps =
+export type RCComponentElementProps =
 	| (Partial<HTMLDivElement> & {
 			focus: () => void;
 			getValue: () => string;
 			setValue: (value: string) => void;
 	  })
-	| null;" > src/components/$1/${component_name_lowercase}-model.ts
+	| null;" > "$component_folder/$component_name-model.ts"
 
-# Create the tests directory
-mkdir src/components/$1/tests
+echo "import React from "react";
+import { ComponentStory, ComponentMeta } from "@storybook/react";
+import { $component_name } from "./$component_name";
 
-# Create the test file
-touch src/components/$1/tests/test.ts
+// More on default export: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
+export default {
+	title: "ReactComponentLibrary/$component_name",
+	component: $component_name,
+} as ComponentMeta<typeof $component_name>;
 
-# Create the styles file
-touch src/components/$1/style.scss
+// More on component templates: https://storybook.js.org/docs/react/writing-stories/introduction#using-args
+const Template: ComponentStory<typeof $component_name> = (args) => <$component_name {...args} />;
 
-# Create the exports file
-touch src/components/$1/index.ts
-echo "export { $1 } from './$1';
-export * from './${component_name_lowercase}-model';" > src/components/$1/index.ts
+export const HelloWorld = Template.bind({});
+// More on args: https://storybook.js.org/docs/react/writing-stories/args
+HelloWorld.args = {
+	placeholder: "Hello world!",
+};" > "$component_folder/$component_name.stories.tsx"
+
+echo "import React from "react";
+import { render } from "@testing-library/react";
+
+import { $component_name } from "./$component_name";
+
+describe("$component_name", () => {
+	test("Renders the $component_name component", () => {
+		render(<$component_name></$component_name>);
+	});
+});
+" > "$component_folder/$component_name.test.tsx"
+
+echo "import React from "react";
+import { $component_nameProps, RC$component_nameElementProps } from "./$component_name-model";
+import "./style.scss";
+
+/**
+ * @function $component_name
+ * @param {$component_nameProps} props
+ * @returns {JSX.Element} $component_name component
+ * @description $component_name component
+ * @example <$component_name id="$component_name" className="$component_name" icon={faSearch} iconPosition="left" iconOnClick={() => console.log('icon clicked')} />
+ */
+export const $component_name = React.forwardRef<RC$component_nameElementProps, $component_nameProps>(
+	(
+		{
+			id,
+			className,
+			alias,
+			children,
+			width,
+			minWidth,
+			maxWidth,
+			height,
+			minHeight,
+			maxHeight,
+			styles,
+
+			alt,
+		},
+		ref
+	) => {
+
+		const $component_nameProps = {
+			id,
+			alt,
+		};
+		const styleProps = {
+			...styles,
+			width,
+			minWidth,
+			maxWidth,
+			height,
+			minHeight,
+			maxHeight,
+		};
+
+		const style = Object.entries(styleProps).reduce((acc, [key, value]) => {
+			if (value) acc[key] = value;
+			return acc;
+		}, {} as any);
+
+		return (
+			<span
+				style={style}
+				className={`type-$component_name${className ? " " + className : ""}`}
+			>
+				<$component_name {...$component_nameProps}></$component_name>
+			</span>
+		);
+	}
+);
+
+$component_name.displayName = "$component_name";
+" > "$component_folder/$component_name.tsx"
+
+echo "@import ../../globals.scss" > "$component_folder/style.scss"
