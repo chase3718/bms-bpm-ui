@@ -1,0 +1,51 @@
+@import "../../globals.scss";
+
+.type-button {
+	border: none;
+	border-radius: 5px;
+	color: white;
+	font-family: $global-font;
+	font-size: $global-font-size;
+	height: $field-height;
+	line-height: $field-height;
+	margin: 0;
+	padding: 0 10px;
+	text-align: center;
+	text-decoration: none;
+
+	&.primary {
+		background-color: $button-primary;
+	}
+	&.secondary {
+		background-color: $button-secondary;
+	}
+	&.success {
+		background-color: $button-success;
+	}
+	&.danger {
+		background-color: $button-danger;
+	}
+	&.warning {
+		background-color: $button-warning;
+	}
+	&.info {
+		background-color: $button-info;
+	}
+	&.light {
+		background-color: $button-light;
+	}
+	&.dark {
+		background-color: $button-dark;
+	}
+	&.link {
+		background-color: $button-link;
+	}
+
+	svg {
+		font-weight: bold;
+	}
+
+	&:hover {
+		cursor: pointer;
+	}
+}
