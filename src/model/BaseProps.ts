@@ -103,6 +103,16 @@ export interface BaseProps {
 	 */
 	height?: string;
 	/**
+	 * @property hidden
+	 * @description Specifies that an element is not yet, or is no longer, relevant
+	 * @type boolean
+	 * @required No
+	 * @example hidden={true}
+	 * @default false
+	 * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/hidden
+	 */
+	hidden?: boolean;
+	/**
 	 * @property minHeight
 	 * @description Specifies the minimum height for an element
 	 * @type string

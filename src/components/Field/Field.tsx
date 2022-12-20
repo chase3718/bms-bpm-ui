@@ -26,6 +26,7 @@ export const Field = React.forwardRef<RCFieldElementProps, FieldProps>(
 			minWidth,
 			maxWidth,
 			height,
+			hidden,
 			minHeight,
 			maxHeight,
 			styles,
@@ -69,6 +70,7 @@ export const Field = React.forwardRef<RCFieldElementProps, FieldProps>(
 	) => {
 		const labelProps = {
 			width: labelWidth,
+			hidden,
 			htmlFor: id,
 			noSemicolon,
 			text: labelText,
@@ -84,6 +86,7 @@ export const Field = React.forwardRef<RCFieldElementProps, FieldProps>(
 			checked,
 			disabled,
 			form,
+			hidden,
 			min,
 			minLength,
 			max,
@@ -136,21 +139,26 @@ export const Field = React.forwardRef<RCFieldElementProps, FieldProps>(
 			labelProps.styles = { justifyContent: "center" };
 		}
 
+		if (hidden) {
+			styleProps.display = "none";
+		}
+
 		const style = Object.entries(styleProps).reduce((acc, [key, value]) => {
 			if (value) acc[key] = value;
 			return acc;
 		}, {} as any);
 
 		return (
-			<span
+			<div
 				className={`type-field ${"label-" + labelPosition} ${
 					"label-align-" + labelAlign
 				} ${className || ""}`}
 				style={style}
+				hidden={hidden}
 			>
 				<Label {...labelProps}></Label>
 				<Input {...inputProps}></Input>
-			</span>
+			</div>
 		);
 	}
 );

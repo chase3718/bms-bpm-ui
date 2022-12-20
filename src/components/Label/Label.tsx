@@ -21,6 +21,7 @@ export const Label = React.forwardRef<RCLabelElementProps, LabelProps>(
 			minWidth,
 			maxWidth,
 			height,
+			hidden,
 			minHeight,
 			maxHeight,
 			styles,
@@ -35,6 +36,7 @@ export const Label = React.forwardRef<RCLabelElementProps, LabelProps>(
 		const LabelProps = {
 			id,
 			htmlFor,
+			hidden,
 		};
 		const styleProps = {
 			...styles,
@@ -45,6 +47,10 @@ export const Label = React.forwardRef<RCLabelElementProps, LabelProps>(
 			minHeight,
 			maxHeight,
 		};
+
+		if (hidden) {
+			styleProps.display = "none";
+		}
 
 		const style = Object.entries(styleProps).reduce((acc, [key, value]) => {
 			if (value) acc[key] = value;

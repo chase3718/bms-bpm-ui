@@ -28,6 +28,7 @@ export const Input = React.forwardRef<RCInputElementProps, InputProps>(
 			minWidth,
 			maxWidth,
 			height,
+			hidden,
 			minHeight,
 			maxHeight,
 			styles,
@@ -76,6 +77,7 @@ export const Input = React.forwardRef<RCInputElementProps, InputProps>(
 			checked,
 			disabled,
 			form,
+			hidden,
 			min,
 			minLength,
 			max,
@@ -102,6 +104,10 @@ export const Input = React.forwardRef<RCInputElementProps, InputProps>(
 			minHeight,
 			maxHeight,
 		};
+
+		if (hidden) {
+			styleProps.display = "none";
+		}
 
 		const style = Object.entries(styleProps).reduce((acc, [key, value]) => {
 			if (value) acc[key] = value;
@@ -142,15 +148,16 @@ export const Input = React.forwardRef<RCInputElementProps, InputProps>(
 		};
 
 		return (
-			<span
+			<div
 				style={style}
 				className={`type-input${className ? " " + className : ""}`}
 				ref={containerRef}
+				hidden={hidden}
 			>
 				{icon && iconPosition === "left" && useIcon(icon)}
 				<input {...inputProps} onChange={handleInput} ref={inputRef}></input>
 				{icon && iconPosition === "right" && useIcon(icon)}
-			</span>
+			</div>
 		);
 	}
 );

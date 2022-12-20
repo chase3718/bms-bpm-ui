@@ -22,6 +22,7 @@ export const Button = React.forwardRef<RCButtonElementProps, ButtonProps>(
 			minWidth,
 			maxWidth,
 			height,
+			hidden,
 			minHeight,
 			maxHeight,
 			styles,
@@ -29,7 +30,7 @@ export const Button = React.forwardRef<RCButtonElementProps, ButtonProps>(
 			// Button Props
 			alt,
 			autoFocus,
-			color,
+			color = "primary",
 			disabled,
 			form,
 			formAction,
@@ -40,6 +41,7 @@ export const Button = React.forwardRef<RCButtonElementProps, ButtonProps>(
 			iconPosition = "right",
 			name,
 			text,
+			textColor,
 			type = "button",
 			value,
 			onClick,
@@ -56,6 +58,7 @@ export const Button = React.forwardRef<RCButtonElementProps, ButtonProps>(
 			formMethod,
 			formNoValidate,
 			formTarget,
+			hidden,
 			name,
 			type,
 			value,
@@ -68,7 +71,12 @@ export const Button = React.forwardRef<RCButtonElementProps, ButtonProps>(
 			height,
 			minHeight,
 			maxHeight,
+			color: textColor,
 		};
+
+		if (hidden) {
+			styleProps.display = "none";
+		}
 
 		const style = Object.entries(styleProps).reduce((acc, [key, value]) => {
 			if (value) acc[key] = value;
