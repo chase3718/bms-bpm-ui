@@ -1,1 +1,14 @@
 @import "../../globals.scss";
+
+.type-field {
+	align-items: center;
+	&.label-top {
+		display: grid;
+		grid-template-rows: max-content max-content;
+	}
+
+	&.label-left {
+		display: grid;
+		grid-template-columns: max-content max-content;
+	}
+}
