@@ -1,4 +1,3 @@
-
 import React from "react";
 import { LabelProps, RCLabelElementProps } from "./Label-model";
 import "./style.scss";
@@ -13,6 +12,7 @@ import "./style.scss";
 export const Label = React.forwardRef<RCLabelElementProps, LabelProps>(
 	(
 		{
+			// Base props
 			id,
 			className,
 			alias,
@@ -25,14 +25,16 @@ export const Label = React.forwardRef<RCLabelElementProps, LabelProps>(
 			maxHeight,
 			styles,
 
-			alt,
+			// Label props
+			htmlFor,
+			noSemicolon,
+			text,
 		},
 		ref
 	) => {
-
 		const LabelProps = {
 			id,
-			alt,
+			htmlFor,
 		};
 		const styleProps = {
 			...styles,
@@ -50,12 +52,16 @@ export const Label = React.forwardRef<RCLabelElementProps, LabelProps>(
 		}, {} as any);
 
 		return (
-			<span
+			<label
+				{...LabelProps}
+				// ref={ref}
+				className={`type-label ${className}`}
 				style={style}
-				className={`type-Label${className ? " " + className : ""}`}
 			>
-				<Label {...LabelProps}></Label>
-			</span>
+				{text && text}
+				{!noSemicolon && ":"}
+				{children}
+			</label>
 		);
 	}
 );
