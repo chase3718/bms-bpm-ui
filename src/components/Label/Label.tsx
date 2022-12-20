@@ -55,7 +55,7 @@ export const Label = React.forwardRef<RCLabelElementProps, LabelProps>(
 			<label
 				{...LabelProps}
 				// ref={ref}
-				className={`type-label ${className}`}
+				className={`type-label ${className === undefined ? "" : className}`}
 				style={style}
 			>
 				{text && text}
