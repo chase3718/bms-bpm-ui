@@ -19,6 +19,7 @@ import "./style.scss";
 export const Input = React.forwardRef<RCInputElementProps, InputProps>(
 	(
 		{
+			// Default Props
 			id,
 			className,
 			alias,
@@ -31,6 +32,7 @@ export const Input = React.forwardRef<RCInputElementProps, InputProps>(
 			maxHeight,
 			styles,
 
+			// Input Props
 			alt,
 			autoComplete = "off",
 			autoFocus = false,
