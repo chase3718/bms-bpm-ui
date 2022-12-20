@@ -6,19 +6,37 @@ import { BaseProps } from "../../model";
  */
 export interface LabelProps extends BaseProps {
 	/**
-	 * @property alt
-	 * @description Specifies an alternate text for an image, if the image cannot be displayed
+	 * @property htmlFor
+	 * @description Specifies which form element a label is bound to
 	 * @type string
 	 * @required No
-	 * @example alt="Alternate text"
+	 * @example htmlFor="input1"
 	 * @default undefined
-	 * @see https://www.w3schools.com/tags/att_Label_alt.asp
+	 * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/label#attr-for
 	 */
-	alt?: string;
+	htmlFor?: string;
+	/**
+	 * @property noSemicolon
+	 * @description Removes semicolon from the label text
+	 * @type boolean
+	 * @required No
+	 * @example noSemicolon={true}
+	 * @default false
+	 */
+	noSemicolon?: boolean;
+	/**
+	 * @property text
+	 * @description Label text
+	 * @type string
+	 * @required No
+	 * @example text="Label"
+	 * @default undefined
+	 */
+	text?: string;
 }
 
-export type RCComponentElementProps =
-	| (Partial<HTMLDivElement> & {
+export type RCLabelElementProps =
+	| (Partial<HTMLLabelElement> & {
 			focus: () => void;
 			getValue: () => string;
 			setValue: (value: string) => void;
