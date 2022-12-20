@@ -4,7 +4,7 @@ import React, {
 	useRef,
 	useState,
 } from "react";
-import { InputProps, RCInputElementProps } from "./input-model";
+import { InputProps, RCInputElementProps } from "./Input-model";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { IconDefinition } from "@fortawesome/fontawesome-svg-core";
 import "./style.scss";
