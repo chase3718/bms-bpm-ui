@@ -35,6 +35,15 @@ export interface FieldProps extends BaseProps, LabelProps, InputProps {
 	 */
 	labelAlign?: "left" | "center" | "right";
 	/**
+	 * @property labelText
+	 * @description Specifies the text of the label
+	 * @type string
+	 * @required No
+	 * @example labelText="Label"
+	 * @default undefined
+	 */
+	labelText?: string;
+	/**
 	 * @property inputWidth
 	 * @description Specifies the width of the input
 	 * @type string
