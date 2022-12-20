@@ -33,7 +33,7 @@ export interface ${component_name}Props extends BaseProps {
 	alt?: string;
 }
 
-export type RCComponentElementProps =
+export type RC${component_name}ElementProps =
 	| (Partial<HTMLDivElement> & {
 			focus: () => void;
 			getValue: () => string;
