@@ -16,42 +16,50 @@ export const Field = React.forwardRef<RCFieldElementProps, FieldProps>(
 	(
 		{
 			// Base props
-			id = "field-" + useRandomId(),
+			alias,
 			autoFocus,
+			children,
 			className,
 			disabled,
-			alias,
-			children,
-			width,
-			minWidth,
-			maxWidth,
 			height,
 			hidden,
-			minHeight,
+			id = "field-" + useRandomId(),
 			maxHeight,
+			maxWidth,
+			minHeight,
+			minWidth,
+			state,
+			setState,
 			styles,
+			width,
 
 			// Field props
-			labelPosition = "top",
-			labelAlign = "left",
-			labelWidth,
 			inputWidth,
+			labelAlign = "left",
+			labelPosition = "top",
+			labelWidth,
 
 			// Label props
-			noSemicolon,
 			labelText,
+			noSemicolon,
 
 			// Input props
 			alt,
 			autoComplete,
 			checked,
+			defaultValue,
 			form,
-			min,
-			minLength,
+			icon,
+			iconOnClick,
+			iconPosition,
 			max,
 			maxLength,
+			min,
+			minLength,
 			multiple,
 			name,
+			onChange,
+			onKeyDown,
 			pattern,
 			placeholder,
 			readOnly,
@@ -59,12 +67,6 @@ export const Field = React.forwardRef<RCFieldElementProps, FieldProps>(
 			size,
 			step,
 			type,
-			defaultValue,
-			icon,
-			iconPosition,
-			iconOnClick,
-			onChange,
-			onKeyDown,
 		},
 		ref
 	) => {
@@ -107,6 +109,8 @@ export const Field = React.forwardRef<RCFieldElementProps, FieldProps>(
 			onChange,
 			onKeyDown,
 			styles: {},
+			state,
+			setState,
 		};
 
 		const styleProps = {
