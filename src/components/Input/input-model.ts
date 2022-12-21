@@ -214,16 +214,6 @@ export interface InputProps extends BaseProps {
 	 */
 	type?: InputType;
 	/**
-	 * @property defaultValue
-	 * @description Specifies the value of an <input> element
-	 * @type string
-	 * @required No
-	 * @example defaultValue="value"
-	 * @default undefined
-	 * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#attr-value
-	 */
-	defaultValue?: string;
-	/**
 	 * @property icon
 	 * @description Specifies the icon to be displayed in the input
 	 * @type IconDefinition

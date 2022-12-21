@@ -143,23 +143,23 @@ export interface BaseProps {
 	 */
 	styles?: CSSProperties;
 	/**
-	 * @property state
-	 * @description Specifies the state for an element
+	 * @property value
+	 * @description Specifies the value for an element
 	 * @type any
 	 * @required No
-	 * @example state={value}
+	 * @example value={value}
 	 */
-	state?: any;
+	value?: any;
 	/**
-	 * @property setState
-	 * @description Specifies the setState for an element
-	 * @type (state: any) => void
+	 * @property setValue
+	 * @description Specifies the setValue for an element
+	 * @type (value: any) => void
 	 * @required No
-	 * @example setState={(value) => setState(value)}
+	 * @example setValue={(value) => setValue(value)}
 	 * @default undefined
-	 * @see https://reactjs.org/docs/react-component.html#setstate
+	 * @see https://reactjs.org/docs/react-component.html#setvalue
 	 */
-	setState?: (state: any) => void;
+	setValue?: (value: any) => void;
 	/**
 	 * @property onChange
 	 * @description Specifies the onChange for an element

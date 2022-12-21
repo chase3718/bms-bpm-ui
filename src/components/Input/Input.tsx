@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { InputProps } from "./Input-model";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { IconDefinition } from "@fortawesome/fontawesome-svg-core";
@@ -27,16 +27,15 @@ export const Input = React.forwardRef<HTMLInputElement, InputProps>(
 			maxWidth,
 			minHeight,
 			minWidth,
-			setState,
+			setValue,
 			styles,
-			state,
+			value,
 			width,
 			// Input Props
 			alt,
 			autoComplete = "off",
 			autoFocus = false,
 			checked = false,
-			defaultValue,
 			disabled = false,
 			form,
 			icon,
@@ -84,7 +83,7 @@ export const Input = React.forwardRef<HTMLInputElement, InputProps>(
 			size,
 			step,
 			type,
-			value: defaultValue,
+			value: value,
 		};
 		const styleProps = {
 			...styles,
@@ -113,8 +112,8 @@ export const Input = React.forwardRef<HTMLInputElement, InputProps>(
 		};
 
 		const handleInput = (e: React.ChangeEvent<HTMLInputElement>) => {
-			if (onChange) onChange(e.target.value, state, e);
-			if (setState) setState(e.target.value);
+			if (onChange) onChange(e.target.value, value, e);
+			if (setValue) setValue(e.target.value);
 		};
 
 		return (

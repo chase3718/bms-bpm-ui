@@ -28,8 +28,8 @@ export const Field = React.forwardRef<RCFieldElementProps, FieldProps>(
 			maxWidth,
 			minHeight,
 			minWidth,
-			state,
-			setState,
+			value,
+			setValue,
 			styles,
 			width,
 
@@ -47,7 +47,6 @@ export const Field = React.forwardRef<RCFieldElementProps, FieldProps>(
 			alt,
 			autoComplete,
 			checked,
-			defaultValue,
 			form,
 			icon,
 			iconOnClick,
@@ -102,15 +101,14 @@ export const Field = React.forwardRef<RCFieldElementProps, FieldProps>(
 			size,
 			step,
 			type,
-			defaultValue,
 			icon,
 			iconPosition,
 			iconOnClick,
 			onChange,
 			onKeyDown,
 			styles: {},
-			state,
-			setState,
+			value,
+			setValue,
 		};
 
 		const styleProps = {
