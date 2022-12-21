@@ -4,7 +4,7 @@
 		"module": "esnext",
 		"jsx": "react",
 		"sourceMap": true,
-		// "inlineSources": true,
+		"inlineSources": true,
 		"outDir": "dist",
 		"strict": true,
 		"moduleResolution": "node",

@@ -15,12 +15,12 @@ export default [
 			{
 				file: packageJson.main,
 				format: "cjs",
-				// sourcemap: true,
+				sourcemap: true,
 			},
 			{
 				file: packageJson.module,
 				format: "esm",
-				// sourcemap: true,
+				sourcemap: true,
 			},
 		],
 		plugins: [
@@ -30,10 +30,11 @@ export default [
 			typescript({
 				tsconfig: "./tsconfig.json",
 				exclude: ["**/*.stories.tsx", "**/*tests.ts"],
+				// sourceMap: false,
 				// inlineSources: true,
 			}),
 			postcss(),
-			terser(),
+			terser({ sourceMap: true }),
 		],
 	},
 	{
