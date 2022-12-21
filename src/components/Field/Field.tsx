@@ -3,7 +3,6 @@ import { FieldProps } from "./Field-model";
 import "./style.scss";
 import { Label } from "../Label";
 import { Input } from "../Input";
-import { useRandomId } from "../../hooks";
 
 /**
  * @function Field
@@ -21,7 +20,7 @@ export const Field = ({
 	disabled,
 	height,
 	hidden,
-	id = "field-" + useRandomId(),
+	id,
 	maxHeight,
 	maxWidth,
 	minHeight,
@@ -65,19 +64,10 @@ export const Field = ({
 	step,
 	type,
 }: FieldProps) => {
-	const labelProps = {
-		width: labelWidth,
-		hidden,
-		htmlFor: id,
-		noSemicolon,
-		text: labelText,
-		styles: {},
-	};
-
 	const inputProps = {
 		alt,
 		autoFocus,
-		id: id,
+		id,
 		width: "100%",
 		autoComplete,
 		checked,
@@ -105,6 +95,14 @@ export const Field = ({
 		styles: {},
 		value,
 		setValue,
+	};
+	const labelProps = {
+		width: labelWidth,
+		hidden,
+		htmlFor: id,
+		noSemicolon,
+		text: labelText,
+		styles: {},
 	};
 
 	const styleProps = {
@@ -148,9 +146,9 @@ export const Field = ({
 
 	return (
 		<div
-			className={`type-field ${"label-" + labelPosition} ${
-				"label-align-" + labelAlign
-			} ${className || ""}`}
+			className={`type-field${" label-" + labelPosition}${
+				" label-align-" + labelAlign
+			}${" " + className || ""}`}
 			style={style}
 			hidden={hidden}
 		>
