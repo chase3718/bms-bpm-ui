@@ -1,4 +1,4 @@
-import React, { useCallback } from "react";
+import React, { ChangeEvent, useCallback } from "react";
 import { CheckboxProps, RCCheckboxElementProps } from "./Checkbox-model";
 import "./style.scss";
 import { Label } from "../Label";
@@ -93,16 +93,16 @@ export const Checkbox = React.forwardRef<RCCheckboxElementProps, CheckboxProps>(
 			return acc;
 		}, {} as any);
 
-		const clickHandler = (e) => {
-			console.log("Checkbox clicked");
-			if (onClick) onClick(e);
-		};
+		// const clickHandler = (e: ChangeEvent<HTMLInputElement>) => {
+		// 	console.log("Checkbox clicked");
+		// 	if (onClick) onClick(e);
+		// };
 
 		const changeHandler = useCallback(
 			(ev: React.ChangeEvent<HTMLInputElement>) => {
-				const val = ev.target.value;
-				onChange?.(val, value, ev.target);
-				setValue(val);
+				// const val = ev.target.value;
+				// onChange?.(val, value, ev.target);
+				// setValue(val);
 			},
 			[value]
 		);
@@ -111,7 +111,7 @@ export const Checkbox = React.forwardRef<RCCheckboxElementProps, CheckboxProps>(
 			<Label {...labelProps}>
 				<input
 					onClick={(e) => {
-						clickHandler(e);
+						// clickHandler(e);
 					}}
 					onChange={(e) => {
 						changeHandler(e);
