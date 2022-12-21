@@ -1,13 +1,10 @@
-import React, {
-	useCallback,
-	useImperativeHandle,
-	useRef,
-	useState,
-} from "react";
+import React from "react";
 import { InputProps, RCInputElementProps } from "./Input-model";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { IconDefinition } from "@fortawesome/fontawesome-svg-core";
 import "./style.scss";
+
+console.log("Input.tsx");
 
 /**
  * @function Input
@@ -20,18 +17,18 @@ export const Input = React.forwardRef<RCInputElementProps, InputProps>(
 	(
 		{
 			// Default Props
-			id,
-			className,
 			alias,
+			className,
 			children,
-			width,
-			minWidth,
-			maxWidth,
 			height,
 			hidden,
-			minHeight,
+			id,
 			maxHeight,
+			maxWidth,
+			minHeight,
+			minWidth,
 			styles,
+			width,
 
 			// Input Props
 			alt,
@@ -42,14 +39,17 @@ export const Input = React.forwardRef<RCInputElementProps, InputProps>(
 			disabled = false,
 			form,
 			icon,
+			iconOnClick,
 			iconPosition = "right",
-			inputSetter,
-			min,
-			minLength,
+			valueSetter,
 			max,
 			maxLength,
+			min,
+			minLength,
 			multiple = false,
 			name,
+			onChange,
+			onKeyDown,
 			pattern,
 			placeholder,
 			readOnly = false,
@@ -57,20 +57,16 @@ export const Input = React.forwardRef<RCInputElementProps, InputProps>(
 			size,
 			step,
 			type = "text",
-			iconOnClick,
-			onChange,
-			onKeyDown,
 		},
 		ref
 	) => {
-		const [value, setValue] = useState<string | number | string[] | undefined>(
-			defaultValue
-		);
-		const inputRef = useRef<HTMLInputElement>(null);
-		const containerRef = useRef<HTMLDivElement>(null);
+		// const [value, setValue] = useState<string | number | string[] | undefined>(
+		// 	defaultValue
+		// );
+		// const inputRef = useRef<HTMLInputElement>(null);
+		// const containerRef = useRef<HTMLDivElement>(null);
 
 		const inputProps = {
-			id,
 			alt,
 			autoComplete,
 			autoFocus,
@@ -78,12 +74,15 @@ export const Input = React.forwardRef<RCInputElementProps, InputProps>(
 			disabled,
 			form,
 			hidden,
-			min,
-			minLength,
+			id,
 			max,
 			maxLength,
+			min,
+			minLength,
 			multiple,
 			name,
+			onChange,
+			onKeyDown,
 			pattern,
 			placeholder,
 			readOnly,
@@ -92,8 +91,6 @@ export const Input = React.forwardRef<RCInputElementProps, InputProps>(
 			step,
 			type,
 			value: defaultValue,
-			onChange,
-			onKeyDown,
 		};
 		const styleProps = {
 			...styles,
@@ -105,36 +102,10 @@ export const Input = React.forwardRef<RCInputElementProps, InputProps>(
 			maxHeight,
 		};
 
-		if (hidden) {
-			styleProps.display = "none";
-		}
-
 		const style = Object.entries(styleProps).reduce((acc, [key, value]) => {
 			if (value) acc[key] = value;
 			return acc;
 		}, {} as any);
-
-		useImperativeHandle(ref, () => ({
-			focus: () => inputRef.current?.focus(),
-			getValue: () => inputRef.current?.value || "",
-			setValue: (value: string | number | string[]) => setValue(value),
-		}));
-
-		const handleInput = useCallback(
-			(ev: React.ChangeEvent<HTMLInputElement>) => {
-				const val = ev.target.value.slice(0, maxLength);
-				onChange?.(val, value, ev.target);
-				// inputSetter?.(val);
-				// setValue(val);
-				// setVals(val);
-			},
-			[value]
-		);
-
-		const setVals = (val) => {
-			inputSetter?.(val);
-			setValue(val);
-		};
 
 		const useIcon = (icon: IconDefinition) => {
 			return (
@@ -150,12 +121,21 @@ export const Input = React.forwardRef<RCInputElementProps, InputProps>(
 		return (
 			<div
 				style={style}
-				className={`type-input${className ? " " + className : ""}`}
-				ref={containerRef}
+				className={`type-input ${className ? className : ""} ${
+					hidden ? "hidden" : ""
+				}}`}
+				// ref={containerRef}
 				hidden={hidden}
 			>
 				{icon && iconPosition === "left" && useIcon(icon)}
-				<input {...inputProps} onChange={handleInput} ref={inputRef}></input>
+				<input
+					{...inputProps}
+					// onChange={handleInput}
+					onChange={(e) => {
+						if (valueSetter) valueSetter(e.target.value);
+					}}
+					// ref={inputRef}
+				></input>
 				{icon && iconPosition === "right" && useIcon(icon)}
 			</div>
 		);
