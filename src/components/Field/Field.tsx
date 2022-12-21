@@ -1,5 +1,5 @@
 import React from "react";
-import { FieldProps, RCFieldElementProps } from "./Field-model";
+import { FieldProps } from "./Field-model";
 import "./style.scss";
 import { Label } from "../Label";
 import { Input } from "../Input";

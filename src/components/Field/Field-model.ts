@@ -53,11 +53,3 @@ export interface FieldProps extends BaseProps, LabelProps, InputProps {
 	 */
 	inputWidth?: string;
 }
-
-export type RCFieldElementProps =
-	| (Partial<HTMLElement> & {
-			focus: () => void;
-			getValue: () => string;
-			setValue: (value: string) => void;
-	  })
-	| null;
