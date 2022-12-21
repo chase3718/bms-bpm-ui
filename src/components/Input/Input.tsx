@@ -1,5 +1,5 @@
 import React from "react";
-import { InputProps, RCInputElementProps } from "./Input-model";
+import { InputProps } from "./Input-model";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { IconDefinition } from "@fortawesome/fontawesome-svg-core";
 import "./style.scss";
@@ -13,7 +13,7 @@ console.log("Input.tsx");
  * @description Input component
  * @example <Input id="input" className="input" icon={faSearch} iconPosition="left" iconOnClick={() => console.log('icon clicked')} />
  */
-export const Input = React.forwardRef<RCInputElementProps, InputProps>(
+export const Input = React.forwardRef<HTMLInputElement, InputProps>(
 	(
 		{
 			// Default Props
@@ -27,9 +27,10 @@ export const Input = React.forwardRef<RCInputElementProps, InputProps>(
 			maxWidth,
 			minHeight,
 			minWidth,
+			setState,
 			styles,
+			state,
 			width,
-
 			// Input Props
 			alt,
 			autoComplete = "off",
@@ -41,7 +42,6 @@ export const Input = React.forwardRef<RCInputElementProps, InputProps>(
 			icon,
 			iconOnClick,
 			iconPosition = "right",
-			valueSetter,
 			max,
 			maxLength,
 			min,
@@ -60,12 +60,6 @@ export const Input = React.forwardRef<RCInputElementProps, InputProps>(
 		},
 		ref
 	) => {
-		// const [value, setValue] = useState<string | number | string[] | undefined>(
-		// 	defaultValue
-		// );
-		// const inputRef = useRef<HTMLInputElement>(null);
-		// const containerRef = useRef<HTMLDivElement>(null);
-
 		const inputProps = {
 			alt,
 			autoComplete,
@@ -118,23 +112,25 @@ export const Input = React.forwardRef<RCInputElementProps, InputProps>(
 			);
 		};
 
+		const handleInput = (e: React.ChangeEvent<HTMLInputElement>) => {
+			if (onChange) onChange(e.target.value, state, e);
+			if (setState) setState(e.target.value);
+		};
+
 		return (
 			<div
 				style={style}
 				className={`type-input ${className ? className : ""} ${
 					hidden ? "hidden" : ""
-				}}`}
-				// ref={containerRef}
+				}`}
 				hidden={hidden}
 			>
 				{icon && iconPosition === "left" && Icon(icon)}
 				<input
 					{...inputProps}
-					// onChange={handleInput}
 					onChange={(e) => {
-						if (valueSetter) valueSetter(e.target.value);
+						handleInput(e);
 					}}
-					// ref={inputRef}
 				></input>
 				{icon && iconPosition === "right" && Icon(icon)}
 			</div>
