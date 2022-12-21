@@ -25,6 +25,8 @@ export const Checkbox = React.forwardRef<RCCheckboxElementProps, CheckboxProps>(
 			minHeight,
 			maxHeight,
 			styles,
+			value,
+			setValue,
 
 			labelPosition = "left",
 			labelAlign = "left",
@@ -42,14 +44,11 @@ export const Checkbox = React.forwardRef<RCCheckboxElementProps, CheckboxProps>(
 			name,
 			readOnly = false,
 			required = false,
-			defaultValue,
 			onChange,
 			onClick,
 		},
 		ref
 	) => {
-		const [value, setValue] = React.useState(defaultValue);
-
 		const CheckboxProps = {
 			id,
 			alt,
@@ -61,7 +60,7 @@ export const Checkbox = React.forwardRef<RCCheckboxElementProps, CheckboxProps>(
 			name,
 			readOnly,
 			required,
-			value: defaultValue,
+			value,
 		};
 
 		const labelProps = {
