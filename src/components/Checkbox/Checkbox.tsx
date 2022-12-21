@@ -1,7 +1,7 @@
-
-import React from "react";
+import React, { useCallback } from "react";
 import { CheckboxProps, RCCheckboxElementProps } from "./Checkbox-model";
 import "./style.scss";
+import { Label } from "../Label";
 
 /**
  * @function Checkbox
@@ -21,19 +21,59 @@ export const Checkbox = React.forwardRef<RCCheckboxElementProps, CheckboxProps>(
 			minWidth,
 			maxWidth,
 			height,
+			hidden,
 			minHeight,
 			maxHeight,
 			styles,
 
+			labelPosition = "left",
+			labelAlign = "left",
+			labelWidth,
+
+			// Label props
+			noSemicolon,
+			labelText,
+
 			alt,
+			autoFocus = false,
+			checked = false,
+			disabled = false,
+			form,
+			name,
+			readOnly = false,
+			required = false,
+			defaultValue,
+			onChange,
+			onClick,
 		},
 		ref
 	) => {
+		const [value, setValue] = React.useState(defaultValue);
 
 		const CheckboxProps = {
 			id,
 			alt,
+			autoFocus,
+			defaultChecked: checked,
+			disabled,
+			form,
+			hidden,
+			name,
+			readOnly,
+			required,
+			value: defaultValue,
 		};
+
+		const labelProps = {
+			width: labelWidth,
+			hidden,
+			htmlFor: id,
+			noSemicolon,
+			text: labelText,
+			labelPosition,
+			styles: {},
+		};
+
 		const styleProps = {
 			...styles,
 			width,
@@ -44,18 +84,43 @@ export const Checkbox = React.forwardRef<RCCheckboxElementProps, CheckboxProps>(
 			maxHeight,
 		};
 
+		if (hidden) {
+			styleProps.display = "none";
+		}
+
 		const style = Object.entries(styleProps).reduce((acc, [key, value]) => {
 			if (value) acc[key] = value;
 			return acc;
 		}, {} as any);
 
+		const clickHandler = (e) => {
+			console.log("Checkbox clicked");
+			if (onClick) onClick(e);
+		};
+
+		const changeHandler = useCallback(
+			(ev: React.ChangeEvent<HTMLInputElement>) => {
+				const val = ev.target.value;
+				onChange?.(val, value, ev.target);
+				setValue(val);
+			},
+			[value]
+		);
+
 		return (
-			<span
-				style={style}
-				className={`type-Checkbox${className ? " " + className : ""}`}
-			>
-				<Checkbox {...CheckboxProps}></Checkbox>
-			</span>
+			<Label {...labelProps}>
+				<input
+					onClick={(e) => {
+						clickHandler(e);
+					}}
+					onChange={(e) => {
+						changeHandler(e);
+					}}
+					type="checkbox"
+					{...CheckboxProps}
+					style={style}
+				/>
+			</Label>
 		);
 	}
 );
