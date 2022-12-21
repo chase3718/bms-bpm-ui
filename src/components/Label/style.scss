@@ -2,9 +2,23 @@
 
 .type-label {
 	display: flex;
-	// position: relative;
 	font-size: $global-font-size;
 	color: $light-gray-text;
 	font-family: $global-font;
 	margin-right: 3px;
+	align-items: center;
+	width: fit-content;
+
+	&.label-top {
+		flex-direction: column;
+	}
+	&.label-bottom {
+		flex-direction: column-reverse;
+	}
+	&.label-left {
+		flex-direction: row;
+	}
+	&.label-right {
+		flex-direction: row-reverse;
+	}
 }
