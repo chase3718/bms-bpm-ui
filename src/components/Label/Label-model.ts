@@ -25,6 +25,15 @@ export interface LabelProps extends BaseProps {
 	 */
 	noSemicolon?: boolean;
 	/**
+	 * @property labelPosition
+	 * @description Specifies the position of the label
+	 * @type "left" | "top" | "right" | "bottom"
+	 * @required No
+	 * @example labelPosition="top"
+	 * @default "top"
+	 */
+	labelPosition?: "left" | "top" | "right" | "bottom";
+	/**
 	 * @property text
 	 * @description Label text
 	 * @type string
@@ -34,11 +43,3 @@ export interface LabelProps extends BaseProps {
 	 */
 	text?: string;
 }
-
-export type RCLabelElementProps =
-	| (Partial<HTMLLabelElement> & {
-			focus: () => void;
-			getValue: () => string;
-			setValue: (value: string) => void;
-	  })
-	| null;
