@@ -1,4 +1,4 @@
-import { ReactNode, CSSProperties } from "react";
+import { ReactNode, CSSProperties, ChangeEvent } from "react";
 
 /**
  * @interface BaseProps
@@ -142,4 +142,31 @@ export interface BaseProps {
 	 * @see https://reactjs.org/docs/dom-elements.html#style
 	 */
 	styles?: CSSProperties;
+	/**
+	 * @property state
+	 * @description Specifies the state for an element
+	 * @type any
+	 * @required No
+	 * @example state={value}
+	 */
+	state?: any;
+	/**
+	 * @property setState
+	 * @description Specifies the setState for an element
+	 * @type (state: any) => void
+	 * @required No
+	 * @example setState={(value) => setState(value)}
+	 * @default undefined
+	 * @see https://reactjs.org/docs/react-component.html#setstate
+	 */
+	setState?: (state: any) => void;
+	/**
+	 * @property onChange
+	 * @description Specifies the onChange for an element
+	 * @type (newValue: any, oldValue: any, element: HTMLElement) => void
+	 * @required No
+	 * @example onChange={(newValue, oldValue, element) => console.log(newValue, oldValue, element)}
+	 * @default undefined
+	 */
+	onChange?: (newValue: any, oldValue: any, element?: ChangeEvent<any>) => void;
 }
