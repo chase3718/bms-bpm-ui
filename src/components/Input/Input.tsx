@@ -29,7 +29,7 @@ export const Input = React.forwardRef<HTMLInputElement, InputProps>(
 			minWidth,
 			setValue,
 			styles,
-			value,
+			value = "",
 			width,
 			// Input Props
 			alt,
@@ -83,7 +83,7 @@ export const Input = React.forwardRef<HTMLInputElement, InputProps>(
 			size,
 			step,
 			type,
-			value: value,
+			value,
 		};
 		const styleProps = {
 			...styles,
