@@ -222,7 +222,15 @@ export interface InputProps extends BaseProps {
 	 * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#attr-value
 	 */
 	defaultValue?: string;
-	inputSetter?: (value: string) => void;
+	/**
+	 * @property valueSetter
+	 * @description Specifies the function to be called when the value of the input changes
+	 * @type (value: string) => void
+	 * @required No
+	 * @example const[value, setValue] = useState("value"); valueSetter={setValue}
+	 * @default undefined
+	 */
+	valueSetter?: (value: string) => void;
 	/**
 	 * @property icon
 	 * @description Specifies the icon to be displayed in the input
