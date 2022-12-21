@@ -1,5 +1,6 @@
 import { IconDefinition } from "@fortawesome/fontawesome-svg-core";
 import { BaseProps } from "../../model";
+import { ChangeEvent } from "react";
 
 type InputType =
 	| "color"
@@ -223,15 +224,6 @@ export interface InputProps extends BaseProps {
 	 */
 	defaultValue?: string;
 	/**
-	 * @property valueSetter
-	 * @description Specifies the function to be called when the value of the input changes
-	 * @type (value: string) => void
-	 * @required No
-	 * @example const[value, setValue] = useState("value"); valueSetter={setValue}
-	 * @default undefined
-	 */
-	valueSetter?: (value: string) => void;
-	/**
 	 * @property icon
 	 * @description Specifies the icon to be displayed in the input
 	 * @type IconDefinition
@@ -261,24 +253,6 @@ export interface InputProps extends BaseProps {
 	 */
 	iconOnClick?: () => void;
 	/**
-	 * @property onChange
-	 * @description Specifies the function to be called when the input value changes
-	 * @type (newValue: string | number | string[] | undefined,
-		oldValue?: string | number | string[] | undefined,
-		currentComponent?: RefObject<HTMLInputElement>) => void
-	 * @required No
-	 * @example onChange={(newValue, oldValue, currentComponent) => {
-	 * 	console.log(newValue, oldValue, currentComponent);
-	 * }}
-	 * @default () => null
-	 * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#attr-onchange
-	 */
-	onChange?: (
-		newValue: string | number | string[] | undefined,
-		oldValue?: string | number | string[] | undefined,
-		currentComponent?: EventTarget & HTMLInputElement
-	) => void;
-	/**
 	 * @property onKeyDown
 	 * @description Specifies the function to be called when a key is pressed down
 	 * @type (event: React.KeyboardEvent<HTMLInputElement>) => void
@@ -290,10 +264,10 @@ export interface InputProps extends BaseProps {
 	onKeyDown?: () => void;
 }
 
-export type RCInputElementProps =
-	| (Partial<HTMLInputElement> & {
-			focus: () => void;
-			getValue: () => string;
-			setValue: (value: string) => void;
-	  })
-	| null;
+// export type RCInputElementProps =
+// 	| (Partial<HTMLInputElement> & {
+// 			focus: () => void;
+// 			getValue: () => string;
+// 			setValue: (value: string) => void;
+// 	  })
+// 	| null;
