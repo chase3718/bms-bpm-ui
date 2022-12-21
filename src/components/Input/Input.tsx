@@ -107,7 +107,7 @@ export const Input = React.forwardRef<RCInputElementProps, InputProps>(
 			return acc;
 		}, {} as any);
 
-		const useIcon = (icon: IconDefinition) => {
+		const Icon = (icon: IconDefinition) => {
 			return (
 				<i
 					onClick={iconOnClick}
@@ -127,7 +127,7 @@ export const Input = React.forwardRef<RCInputElementProps, InputProps>(
 				// ref={containerRef}
 				hidden={hidden}
 			>
-				{icon && iconPosition === "left" && useIcon(icon)}
+				{icon && iconPosition === "left" && Icon(icon)}
 				<input
 					{...inputProps}
 					// onChange={handleInput}
@@ -136,7 +136,7 @@ export const Input = React.forwardRef<RCInputElementProps, InputProps>(
 					}}
 					// ref={inputRef}
 				></input>
-				{icon && iconPosition === "right" && useIcon(icon)}
+				{icon && iconPosition === "right" && Icon(icon)}
 			</div>
 		);
 	}
