@@ -40,6 +40,9 @@
 	&.link {
 		background-color: $button-link;
 	}
+	&.bms {
+		background-color: $bms-purple;
+	}
 
 	svg {
 		font-weight: bold;
