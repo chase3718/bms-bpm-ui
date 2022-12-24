@@ -53,7 +53,8 @@ export interface ButtonProps extends BaseProps {
 		| "info"
 		| "light"
 		| "dark"
-		| "link";
+		| "link"
+		| "bms";
 	/**
 	 * @property form
 	 * @description Specifies one or more forms the button belongs to
