@@ -1,1 +1,29 @@
 @import "../../globals.scss";
+
+.type-fieldset {
+	border-radius: 3px;
+	box-shadow: $box-shadow;
+	background: $panel-background-color;
+	border: 1px solid #fff;
+	border-top: 1px solid #e6e6e6;
+	padding: 10px;
+	.type-legend {
+		display: flex;
+		align-items: center;
+		font-size: $header-font-size;
+		font-family: $global-font;
+		font-weight: 600;
+		color: $bms-purple;
+		.type-collapse-button {
+			border-radius: 3px;
+			font-size: calc($global-font-size - 4px);
+			font-weight: 600;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			width: $global-font-size;
+			height: $global-font-size;
+			padding: 0;
+		}
+	}
+}

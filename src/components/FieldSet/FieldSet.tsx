@@ -1,6 +1,9 @@
-import React from "react";
+import React, { useState } from "react";
 import { FieldSetProps, RCFieldSetElementProps } from "./FieldSet-model";
 import "./style.scss";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faPlus, faMinus } from "@fortawesome/free-solid-svg-icons";
+import { Button } from "../Button";
 
 /**
  * @function FieldSet
@@ -23,15 +26,26 @@ export const FieldSet = React.forwardRef<RCFieldSetElementProps, FieldSetProps>(
 			hidden,
 			minHeight,
 			maxHeight,
+			margin,
+			padding,
 			styles,
 
 			alt,
+			form,
+			title,
+			collapsed,
+			collapsable = true,
 		},
 		ref
 	) => {
+		const [isCollapsed, setCollapsed] = useState(collapsed);
+		const [icon, setIcon] = useState(collapsed ? faPlus : faMinus);
+
 		const FieldSetProps = {
 			id,
 			alt,
+			form,
+			title,
 		};
 		const styleProps = {
 			...styles,
@@ -41,6 +55,8 @@ export const FieldSet = React.forwardRef<RCFieldSetElementProps, FieldSetProps>(
 			height,
 			minHeight,
 			maxHeight,
+			margin,
+			padding,
 		};
 
 		const style = Object.entries(styleProps).reduce((acc, [key, value]) => {
@@ -48,7 +64,33 @@ export const FieldSet = React.forwardRef<RCFieldSetElementProps, FieldSetProps>(
 			return acc;
 		}, {} as any);
 
-		return <fieldset {...FieldSetProps}>{children}</fieldset>;
+		const collapseHandler = () => {
+			setCollapsed(!isCollapsed);
+			setIcon(!isCollapsed ? faPlus : faMinus);
+		};
+
+		return (
+			<fieldset
+				className={`type-fieldset${className ? " " + className : ""}`}
+				{...FieldSetProps}
+			>
+				{(title || collapsable) && (
+					<legend className={`type-legend`}>
+						{collapsable && (
+							<Button
+								onClick={collapseHandler}
+								className="type-collapse-button"
+								color="secondary"
+							>
+								<FontAwesomeIcon icon={icon}></FontAwesomeIcon>
+							</Button>
+						)}
+						<b>{title}</b>
+					</legend>
+				)}
+				{!isCollapsed && children}
+			</fieldset>
+		);
 	}
 );
 
