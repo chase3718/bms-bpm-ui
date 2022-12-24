@@ -2,6 +2,7 @@
 
 .type-field {
 	align-items: center;
+	margin: 5px;
 	&.label-top {
 		display: grid;
 		grid-template-rows: max-content max-content;
