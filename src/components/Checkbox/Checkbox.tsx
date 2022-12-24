@@ -107,7 +107,10 @@ export const Checkbox = React.forwardRef<RCCheckboxElementProps, CheckboxProps>(
 		);
 
 		return (
-			<Label {...labelProps}>
+			<Label
+				className={`type-checkbox${className ? " " + className : ""}`}
+				{...labelProps}
+			>
 				<input
 					onClick={(e) => {
 						// clickHandler(e);
