@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { InputProps } from "./Input-model";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { IconDefinition } from "@fortawesome/fontawesome-svg-core";
@@ -29,8 +29,9 @@ export const Input = React.forwardRef<HTMLInputElement, InputProps>(
 			minWidth,
 			setValue,
 			styles,
-			value = "",
+			value,
 			width,
+
 			// Input Props
 			alt,
 			autoComplete = "off",
@@ -85,6 +86,7 @@ export const Input = React.forwardRef<HTMLInputElement, InputProps>(
 			type,
 			value,
 		};
+
 		const styleProps = {
 			...styles,
 			width,
