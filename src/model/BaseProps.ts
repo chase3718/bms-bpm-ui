@@ -133,6 +133,16 @@ export interface BaseProps {
 	 */
 	maxHeight?: string;
 	/**
+	 * @property margin
+	 * @description Specifies the margin for an element
+	 * @type string
+	 * @required No
+	 * @example margin="10px"
+	 * @default undefined
+	 * @see https://developer.mozilla.org/en-US/docs/Web/CSS/margin
+	 */
+	margin?: string;
+	/**
 	 * @property style
 	 * @description Specifies an inline style for an element
 	 * @type CSSProperties
