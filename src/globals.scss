@@ -5,6 +5,7 @@ $field-border: 1px solid #d0d0d0;
 $field-height: 30px;
 $light-gray-text: #404040;
 $panel-background-color: #f6f6f6;
+$bms-purple: #be2bbb;
 
 // Button Colors
 $button-primary: #007bff;
@@ -16,6 +17,8 @@ $button-info: #17a2b8;
 $button-light: #f8f9fa;
 $button-dark: #343a40;
 $button-link: #007bff;
+
+$box-shadow: rgb(0 0 0 / 20%) 0px 1px 3px 0px, rgb(0 0 0 / 19%) 0px 1px 5px 0px;
 
 * {
 	box-sizing: border-box;
