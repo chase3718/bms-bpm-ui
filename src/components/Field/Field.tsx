@@ -26,6 +26,7 @@ export const Field = ({
 	minHeight,
 	minWidth,
 	margin,
+	padding,
 	value,
 	setValue,
 	styles,
@@ -115,6 +116,7 @@ export const Field = ({
 		minHeight,
 		maxHeight,
 		margin,
+		padding,
 	};
 
 	if (inputWidth) {

@@ -14,7 +14,7 @@ import { Checkbox } from "../Checkbox";
  */
 export const Page = () => {
 	return (
-		<FieldSet>
+		<FieldSet title="Login">
 			<Field labelText="First Name"></Field>
 			<Field labelText="Last Name"></Field>
 			<Field labelText="Email" type="email"></Field>

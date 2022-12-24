@@ -25,6 +25,7 @@ export const Checkbox = React.forwardRef<RCCheckboxElementProps, CheckboxProps>(
 			minHeight,
 			maxHeight,
 			margin,
+			padding,
 			styles,
 			value,
 			setValue,
@@ -83,6 +84,7 @@ export const Checkbox = React.forwardRef<RCCheckboxElementProps, CheckboxProps>(
 			minHeight,
 			maxHeight,
 			margin,
+			padding,
 		};
 
 		if (hidden) {

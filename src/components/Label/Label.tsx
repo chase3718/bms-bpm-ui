@@ -22,6 +22,7 @@ export const Label = ({
 	minHeight,
 	minWidth,
 	margin,
+	padding,
 	styles,
 	width,
 
@@ -47,6 +48,7 @@ export const Label = ({
 		minHeight,
 		maxHeight,
 		margin,
+		padding,
 	};
 
 	const style = Object.entries(styleProps).reduce((acc, [key, value]) => {

@@ -25,6 +25,7 @@ export const Button = React.forwardRef<RCButtonElementProps, ButtonProps>(
 			hidden,
 			minHeight,
 			margin,
+			padding,
 			maxHeight,
 			styles,
 
@@ -74,6 +75,7 @@ export const Button = React.forwardRef<RCButtonElementProps, ButtonProps>(
 			maxHeight,
 			color: textColor,
 			margin,
+			padding,
 		};
 
 		if (hidden) {

@@ -28,6 +28,7 @@ export const Input = React.forwardRef<HTMLInputElement, InputProps>(
 			minHeight,
 			minWidth,
 			margin,
+			padding,
 			setValue,
 			styles,
 			value,
@@ -97,6 +98,7 @@ export const Input = React.forwardRef<HTMLInputElement, InputProps>(
 			minHeight,
 			maxHeight,
 			margin,
+			padding,
 		};
 
 		const style = Object.entries(styleProps).reduce((acc, [key, value]) => {

@@ -143,6 +143,16 @@ export interface BaseProps {
 	 */
 	margin?: string;
 	/**
+	 * @property padding
+	 * @description Specifies the padding for an element
+	 * @type string
+	 * @required No
+	 * @example padding="10px"
+	 * @default undefined
+	 * @see https://developer.mozilla.org/en-US/docs/Web/CSS/padding
+	 */
+	padding?: string;
+	/**
 	 * @property style
 	 * @description Specifies an inline style for an element
 	 * @type CSSProperties
