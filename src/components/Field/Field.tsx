@@ -145,15 +145,15 @@ export const Field = ({
 	}, {} as any);
 
 	return (
-		<div
+		<Label
 			className={`type-field${" label-" + labelPosition}${
 				" label-align-" + labelAlign
 			}${" " + className || ""}`}
-			style={style}
+			{...labelProps}
+			styles={style}
 			hidden={hidden}
 		>
-			<Label {...labelProps}></Label>
 			<Input {...inputProps}></Input>
-		</div>
+		</Label>
 	);
 };
