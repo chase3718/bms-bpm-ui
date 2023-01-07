@@ -1,5 +1,4 @@
 import React from "react";
-import { PageProps, RCPageElementProps } from "./Page-model";
 import "./style.scss";
 import { FieldSet } from "../FieldSet";
 import { Field } from "../Field";
