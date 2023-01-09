@@ -152,7 +152,7 @@ export const Field = ({
 		<Label
 			className={`type-field${" label-" + labelPosition}${
 				" label-align-" + labelAlign
-			}${" " + className || ""}`}
+			}${className ? " " + className : ""}`}
 			{...labelProps}
 			styles={style}
 			hidden={hidden}
