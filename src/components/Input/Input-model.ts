@@ -1,6 +1,5 @@
 import { IconDefinition } from "@fortawesome/fontawesome-svg-core";
 import { BaseProps } from "../../model";
-import { ChangeEvent } from "react";
 
 type InputType =
 	| "color"
