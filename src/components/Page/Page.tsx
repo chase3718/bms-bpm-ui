@@ -3,6 +3,7 @@ import "./style.scss";
 import { FieldSet } from "../FieldSet";
 import { Field } from "../Field";
 import { Checkbox } from "../Checkbox";
+import { Button } from "../Button";
 
 /**
  * @function Page
@@ -13,12 +14,13 @@ import { Checkbox } from "../Checkbox";
  */
 export const Page = () => {
 	return (
-		<FieldSet title="Login">
+		<FieldSet title="Login" width="200px">
 			<Field labelText="First Name"></Field>
 			<Field labelText="Last Name"></Field>
 			<Field labelText="Email" type="email"></Field>
 			<Field labelText="Password" type="password"></Field>
 			<Checkbox labelText="Remember Password"></Checkbox>
+			<Button text="Login" color="primary" />
 		</FieldSet>
 	);
 };
