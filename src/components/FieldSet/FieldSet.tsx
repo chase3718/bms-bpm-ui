@@ -71,7 +71,7 @@ export const FieldSet = React.forwardRef<RCFieldSetElementProps, FieldSetProps>(
 
 		return (
 			<fieldset
-				className={`type-fieldset${className ? " " + className : ""}`}
+				className={`type-fieldset${className ? " " + className : ""}${hidden ? " hidden" : ""}`}
 				{...FieldSetProps}
 			>
 				{(title || collapsable) && (
