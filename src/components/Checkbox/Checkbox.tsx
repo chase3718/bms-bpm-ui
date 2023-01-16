@@ -14,7 +14,7 @@ export const Checkbox = React.forwardRef<RCCheckboxElementProps, CheckboxProps>(
   ({
     id,
     className,
-    alias,
+    // alias,
     children,
     width,
     minWidth,
@@ -29,6 +29,7 @@ export const Checkbox = React.forwardRef<RCCheckboxElementProps, CheckboxProps>(
     value,
     setValue,
 
+    fiedldAlign = "left",
     labelPosition = "left",
     labelAlign = "left",
     labelWidth,
@@ -82,6 +83,7 @@ export const Checkbox = React.forwardRef<RCCheckboxElementProps, CheckboxProps>(
       maxHeight,
       margin,
       padding,
+      float: fiedldAlign,
     };
 
     if (hidden) {
