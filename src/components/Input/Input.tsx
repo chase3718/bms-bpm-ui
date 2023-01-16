@@ -17,9 +17,9 @@ export const Input = React.forwardRef<HTMLInputElement, InputProps>(
 	(
 		{
 			// Default Props
-			alias,
+			// alias,
 			className,
-			children,
+			// children,
 			height,
 			hidden,
 			id,
@@ -59,8 +59,7 @@ export const Input = React.forwardRef<HTMLInputElement, InputProps>(
 			size,
 			step,
 			type = "text",
-		},
-		ref
+		}
 	) => {
 		const inputProps = {
 			alt,

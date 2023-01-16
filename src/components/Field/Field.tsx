@@ -13,9 +13,9 @@ import { Input } from "../Input";
  */
 export const Field = ({
 	// Base props
-	alias,
+	// alias,
 	autoFocus,
-	children,
+	// children,
 	className,
 	disabled,
 	height,

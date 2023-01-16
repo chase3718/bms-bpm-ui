@@ -181,7 +181,7 @@ export interface ButtonProps extends BaseProps {
 	 * @default undefined
 	 * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button#attr-onclick
 	 */
-	onClick?: () => any;
+	onClick?: () => void;
 }
 
 export type RCButtonElementProps =

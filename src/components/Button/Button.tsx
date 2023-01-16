@@ -16,7 +16,7 @@ export const Button = React.forwardRef<RCButtonElementProps, ButtonProps>(
 			// Default Props
 			id,
 			className,
-			alias,
+			// alias,
 			children,
 			width,
 			minWidth,
@@ -85,7 +85,7 @@ export const Button = React.forwardRef<RCButtonElementProps, ButtonProps>(
 			if (value) acc[key] = value;
 			return acc;
 		}, {} as any);
-
+		
 		return (
 			<button
 				style={{ ...style }}
