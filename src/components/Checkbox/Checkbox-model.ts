@@ -8,6 +8,15 @@ import { LabelProps } from "../Label/Label-model";
  */
 export interface CheckboxProps extends BaseProps, InputProps, LabelProps {
 	/**
+	 * @property fieldAlign
+	 * @description Specifies the alignment of the field
+	 * @type "left" | "right"
+	 * @required No
+	 * @example fieldAlign="center"
+	 * @default "left"
+	 */
+	fiedldAlign?: "left" | "right";
+	/**
 	 * @property labelPosition
 	 * @description Specifies the position of the label
 	 * @type "left" | "top" | "right" | "bottom"

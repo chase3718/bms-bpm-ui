@@ -33,6 +33,7 @@ export const Field = ({
 	width,
 
 	// Field props
+	fieldAlign = "left",
 	inputWidth,
 	labelAlign = "left",
 	labelPosition = "top",
@@ -117,6 +118,7 @@ export const Field = ({
 		maxHeight,
 		margin,
 		padding,
+		float: fieldAlign,
 	};
 
 	if (inputWidth) {

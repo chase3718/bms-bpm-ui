@@ -8,6 +8,15 @@ import { LabelProps } from "../Label/Label-model";
  */
 export interface FieldProps extends BaseProps, LabelProps, InputProps {
 	/**
+	 * @property fieldAlign
+	 * @description Specifies the alignment of the field
+	 * @type "left" | "right"
+	 * @required No
+	 * @example fieldAlign="center"
+	 * @default "left"
+	 */
+	fieldAlign?: "left" | "right";
+	/**
 	 * @property labelPosition
 	 * @description Specifies the position of the label
 	 * @type "left" | "top"
