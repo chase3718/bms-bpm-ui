@@ -11,7 +11,7 @@ import "./style.scss";
  */
 export const Label = ({
 	// Base props
-	alias,
+	// alias,
 	className,
 	children,
 	height,
