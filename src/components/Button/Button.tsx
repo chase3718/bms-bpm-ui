@@ -47,8 +47,7 @@ export const Button = React.forwardRef<RCButtonElementProps, ButtonProps>(
 			type = "button",
 			value,
 			onClick,
-		},
-		ref
+		}
 	) => {
 		const ButtonProps = {
 			id,
