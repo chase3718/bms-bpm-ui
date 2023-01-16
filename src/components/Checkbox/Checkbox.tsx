@@ -48,8 +48,7 @@ export const Checkbox = React.forwardRef<RCCheckboxElementProps, CheckboxProps>(
 			required = false,
 			onChange,
 			onClick,
-		},
-		ref
+		}
 	) => {
 		const CheckboxProps = {
 			id,
@@ -96,19 +95,14 @@ export const Checkbox = React.forwardRef<RCCheckboxElementProps, CheckboxProps>(
 			return acc;
 		}, {} as any);
 
-		// const clickHandler = (e: ChangeEvent<HTMLInputElement>) => {
-		// 	console.log("Checkbox clicked");
-		// 	if (onClick) onClick(e);
-		// };
+		const handleInput = (e: React.ChangeEvent<HTMLInputElement>) => {
+			if (onChange) onChange(e.target.value, value, e);
+			if (setValue) setValue(e.target.value);
+		};
 
-		const changeHandler = useCallback(
-			(ev: React.ChangeEvent<HTMLInputElement>) => {
-				// const val = ev.target.value;
-				// onChange?.(val, value, ev.target);
-				// setValue(val);
-			},
-			[value]
-		);
+		const handleClick = (e: React.MouseEvent<HTMLInputElement>) => {
+			if (onClick) onClick(e);
+		};
 
 		return (
 			<Label
@@ -117,10 +111,10 @@ export const Checkbox = React.forwardRef<RCCheckboxElementProps, CheckboxProps>(
 			>
 				<input
 					onClick={(e) => {
-						// clickHandler(e);
+						handleClick(e);
 					}}
 					onChange={(e) => {
-						changeHandler(e);
+						handleInput(e);
 					}}
 					type="checkbox"
 					{...CheckboxProps}
