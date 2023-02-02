@@ -3,7 +3,7 @@ import "./style.scss";
 import { FieldSet } from "../FieldSet";
 import { Field } from "../Field";
 import { Checkbox } from "../Checkbox";
-import { Button } from "../Button";
+import { Button } from "../old/Button";
 
 /**
  * @function Page
