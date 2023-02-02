@@ -1,5 +1,5 @@
 import { IconDefinition } from "@fortawesome/fontawesome-svg-core";
-import { BaseProps } from "../../../model";
+import { BaseProps } from "../../model";
 
 /**
  * @interface ButtonProps
